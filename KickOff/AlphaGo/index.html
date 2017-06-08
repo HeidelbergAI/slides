@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" o ourhref="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="./images/heidelberg_ai_large_smallLogo.png" data-background-transition="zoom" >
+				</section>
+				<section data-markdown data-transition="slide" data-background-transition="zoom" >
+					<script type="text/template">
+						<h2>How AI eclipses humans in the game of Go</h2></br>
+						![alt text](./images/hai.png)<!-- .element height="38%" width="38%" style="background:none; border:none; box-shadow:none;"-->
+						<p> June $6^{th}$ 2017, speaker: [Simon Kohl](https://twitter.com/saakohl) </p>
+					</script>
+				</section>
+
+				<section data-markdown data-separator="---">
+					<script type="text/template">
+						## What is Go?
+						<ul class="bigFont" style="width: 60%;">
+							<li>two-player board game invented in China more than 2.5k yrs ago</li>
+							<li>goal: use stones to maximize territory by surrounding vacant areas of the board</li>
+							<li>stones can be captured by surrounding them</li>
+							<li>full-board size is 19x19</li>
+						</ul>
+						![go_ex1](./images/go_examples.svg)<!-- .element height="20%" width="20%" style="background:none; border:none; box-shadow:none;"-->
+                        ---
+						## Alternating Markov Games
+						<small>such as chess, backgammon, Go,..</small>
+						<ul class="listLeft" style="width: 65%;">
+							<li>directed tree with states $s \in \cal{S}$ as nodes</li>
+							<li>edges are transitions $(s,a) \rightarrow s'$, with actions $a \in {\cal{A}}(s)$</li>
+							<li>terminal game outcome: $z_t = \pm\, r\,(s_T)$</li>
+							<li>policy $p(a|s)$ is a PDF over legal actions</li>
+							<li>estimate game outcome under prefect play:</br></br>
+							<center>value function $v(s) = \mathbb{E} \, \lbrack z_t \vert s_t =s; a_t,..,a_T \sim p \rbrack$</center></li>
+						</ul>
+						![go_ex1](./images/tree.svg)<!-- .element height="28%" width="28%" style="background:none; border:none; box-shadow:none;"-->
+						---
+						## Why is Go considered difficult?
+						<p></p>
+                        <ul class="listLeft" style="width: 100%;">
+							<li>possible sequences of moves:<br/>
+								<center>$b^d$, with $b$=breadth, $d$=depth</center> </li>
+							<li>chess: $b \approx 35,\; d \approx 80$</li>
+							<li>Go: $b \approx 250,\; d \approx 150$</li>
+							<center>
+							<p>$\rightarrow $ search space size $b^d > $ # atoms in the universe!</p>
+							<p>$\rightarrow $ we need a strategy that reduces both $b$ and $d$!</p>
+							</center>
+						</ul>
+						---
+                        ## Monte Carlo Tree Search
+						<p style="font-size: 80%;width: 100%;">choose optimal action by recursive search!</p>
+						<ul class="listLeft2" style="width: 60%;">
+							<li>reduce search depth:</li>
+							<p>$\rightarrow$ broad, slow simulations within truncated tree only</p>
+							<li>reduce search breadth:</li>
+							<p>beyond $s_L$ full roll-outs till state $s_T$ </p>
+							<p>$\rightarrow$ play few, fast simulations of entire games</p>
+						</ul>
+						![tree intro](./images/tree_intro.svg)<!-- .element height="34%" width="34%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="Fade" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![nets](./images/nets0.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## Supervised policy net
+					<p>~imitating humans~</p>
+					![sl_net](./images/policy_net.svg)<!-- .element height="30%" width="30%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="bottom: 100px; position:absolute; font-size: 30%">
+						source: [Nature](https://www.nature.com/nature/journal/v529/n7587/full/nature16961.html)
+					</p>
+					<ul class="list" style="width: 60%;" >
+						<li>13 layer policy net trained to predict human expert moves:</li>
+						<center style="font-size: 70%">$\Delta\sigma \propto \frac{\partial log\, p{\tiny \sigma}\,(a|s)}{\partial \sigma}$</center>
+						<li>using 30 million recorded state-action-pairs</li>
+						<li>input: raw board positions, recent game history, # liberties, # liberties after this move is played, capture size,...</li>
+					</ul>
+					![sl_net2](./images/policy_net_acc.png)<!-- .element height="5%" width="45%" style="background:none; border:none; box-shadow:none;"-->
+					---
+					## reinforcement policy net
+					<p>~improve in self-play~</p>
+					![sl_net](./images/policy_net.svg)<!-- .element height="30%" width="30%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="bottom: 40px; position:absolute; font-size: 30%">
+						source: [Nature](https://www.nature.com/nature/journal/v529/n7587/full/nature16961.html)
+					</p>
+					<ul class="list" style="width: 60%;" >
+						<li>goal: adjust policy to winning!</li>
+						<li>weights are initialized to $\rho = \rho^- = \sigma$</li>
+						<li>$p{\tiny \rho}$ plays randomly selected previous self $p{\tiny \rho^-}$</li>
+						<li>policy gradient RF ([concise derivation](http://karpathy.github.io/2016/05/31/rl/)):</li></br>
+						<center style="font-size: 70%">$\Delta\rho \propto \sum_t^T\frac{\partial log\, p{\tiny \rho}\,(a_t|s_t)}{\partial \rho}z_t$</center>
+						<center style="font-size: 70%">$z_t = \pm r\(s_T\)$ (depending on player perspective)</center>
+						<li>$p{\tiny \rho}$ won $80\%$ games against $p{\tiny \sigma}$ & $85\%$ against Pachi, MC search program executing 100k simulations/move!</li>
+					</ul>
+					---
+					## value net
+					<p>~instant position evaluation~</p>
+					![val_net](./images/value_net.svg)<!-- .element height="30%" width="30%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="bottom: 50px; position:absolute; font-size: 30%">
+						source: [Nature](https://www.nature.com/nature/journal/v529/n7587/full/nature16961.html)
+					</p>
+					<ul class="list" style="width: 65%;">
+						<li>13 layer conv net with a scalar output</li>
+						<li>$v{\tiny\, \theta}\,(s')$ approximates optimal value function, by estimating the value function of $p{\tiny \rho}(a|s)$</li>
+						<li>trained by regression on state-outcome pairs $(s,z)$:</li></br>
+						<center style="font-size: 70%">$\Delta\theta \propto \frac{\partial v{\tiny theta}\,(s)}{\partial \theta}(z-v{\tiny \theta}(s))$</center>
+						<li>Naive training leads to over-fitting b.c. of correlation of successive positions</li>
+						<p style="font-size: 70%">$\rightarrow$ generate 30 Mio. of self-play games of $p{\tiny \rho}$ and sample ONE position from each game!</p>
+						<li>comparable accuracy to 100 rollouts of $p_{\sigma/\rho}$</li>
+					</ul>
+					---
+					## fast rollout policy
+					<p>~quick 'n dirty roll-outs~</p>
+					<p style="font-size: 70%; float: left;">$p{\tiny \pi}(a_t|s_t)$ is a linear softmax policy based on local features:</p>
+					<ul class="list3" style="width: 100%;">
+						<li>encoding of color & liberties adjacent to previous action $a{\tiny t-1}$ and candidate action $a_t$</li>
+						<li>small number of local handcrafted features encoding common sense Go rules</li>
+					</ul>
+					<p style="font-size: 70%; float: left;">training: predict human expert moves from 8 Mio. positions</p>
+					<p style="font-size: 70%; float: left;">trade-off: accuracy vs. evaluation speed</p>
+					<ul class="list3" style="width: 100%;">
+						<li style="font-size: 70%; float: left; ">$~24\%$ accuracy @ $2\mu s$ per move vs. $~57\%$ @ $3ms$</li>
+					</ul>
+					</script>
+				</section>
+				<section data-transition="slide" data-background="#222" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![tree1](./images/tree1.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![tree2](./images/tree1.0.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![tree2](./images/tree1.0.plus.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="Fade" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![nets](./images/nets.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![nets2](./images/nets2.1.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+				</section>
+				<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## why all the hassle?
+					![elo](./images/elo_rank.png)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="bottom: 150px; right:0px;position:absolute; font-size: 30%">
+						source: [Nature](https://www.nature.com/nature/journal/v529/n7587/full/nature16961.html)
+					</p>
+					<ul class="list" style="width: 100%;">
+						<li>AlphaGo outperforms all previous Go programs even w/o rollouts!</li>
+						<li>rollouts combined with instant position-evaluation however work best</br> $\rightarrow$ complimentary (look-ahead planning & intuition?)</li>
+					</ul>
+					</script>
+                </section>
+				<section data-transition="slide" data-background="#222" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo vs. Lee Sedol
+					<ul class="list" style="width: 100%;">
+						<li>Fan Hui, a 2 dan professional, was beaten 5-0 in October 2015</li>
+						<li>Final Enemy: Lee Sedol, 9 dan professional and 18 time world-champion</li>
+					</ul></br>
+					<blockquote style="font-size: 70%" cite=https://en.wikipedia.org/wiki/Lee_Sedol>
+					 “I have heard that Google DeepMind’s AI is surprisingly strong and getting stronger, but I am confident that I can win at least this time"
+					</blockquote>
+					<blockquote style="font-size: 70%"cite=https://en.wikipedia.org/wiki/Lee_Sedol>
+					"Of course, there would have been many updates in the last four or five months, but that isn’t enough time to challenge me"
+					</blockquote>
+					<small>
+						Lee Sedol, before the March 2016 AlphaGo Matches [(source)](https://en.wikipedia.org/wiki/Lee_Sedol)
+					</small>
+					</script>
+                </section>
+				<section data-background-iframe="https://www.youtube.com/embed/vFr3K2DORc8?autoplay=1&controls=0&showinfo=0&start=1&end=22" data-autoplay>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					Let's skip ahead by 3 hours 48 minutes ...
+					</script>
+				</section>
+				<section data-background-iframe="https://www.youtube.com/embed/vFr3K2DORc8?autoplay=1&&controls=0&showinfo=0&start=13720&end=13748" data-autoplay>
+				</section>
+
+				<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+					<h2>deep nets win!</h2>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## The bigger picture
+					<p style="font-size: 80%;width: 100%;">Lee lost 4-1 and AlphaGo won all games @ [Future of Go Summit 2017](https://events.google.com/alphago2017/)</p>
+					<p style="font-size: 80%;width: 100%;">$\rightarrow$ was this an AI break-through?</p>
+					</script>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## The bigger picture
+					<p style="font-size: 80%;">$\rightarrow$ was this an AI break-through? [(medium article)](https://medium.com/@karpathy/alphago-in-context-c47718cb95a5)</p>
+					![nets2](./images/discussion.svg)<!-- .element height="70%" width="70%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## The bigger picture
+					<p style="font-size: 80%;width: 100%;">$\rightarrow$ was this an AI break-through? [(medium article)](https://medium.com/@karpathy/alphago-in-context-c47718cb95a5)</p>
+					![nets2](./images/discussion2.svg)<!-- .element height="70%" width="70%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					# THANK YOU!
+					![alt text](./images/hai.png)<!-- .element height="38%" width="38%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="font-size: 70%">slides are available @ [simonkohl.github.io/HeidelbergAI/](simonkohl.github.io/HeidelbergAI/)</p>
+					</script>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## Backup-Slides
+					</script>
+                </section>
+				<section data-transition="slide" data-background="#ffffff" data-background-transition="zoom" data-markdown data-separator="---">
+					<script type="text/template">
+					## Comparison of evaluation accuracy
+					![sl_net3](./images/value_net_mse.png)<!-- .element height="80%" width="80%" style="background:none; border:none; box-shadow:none;"-->
+					<p style="bottom: 150px; right:0px;position:absolute; font-size: 30%;">source: [Nature](https://www.nature.com/nature/journal/v529/n7587/full/nature16961.html)</p>
+					<p style="font-size: 80%;">$\rightarrow v_{\theta}$ comparable to mean outcome of 100 rollouts of $p\,{\tiny \sigma/\rho}$!</p>
+					</script>
+				</section>
+				<section data-transition="Fade" data-markdown data-separator="---">
+					<script type="text/template">
+					## AlphaGo's Tree Search
+					![tree10](./images/tree1.0.1.svg)<!-- .element height="75%" width="75%" style="background:none; border:none; box-shadow:none;"-->
+					</script>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+			    	math: {
+						mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+						config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+					},
+
+				dependencies: [
+				    { src: 'plugin/math/math.js', async: true },
+				    { src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
