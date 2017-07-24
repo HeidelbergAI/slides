@@ -9,3 +9,9 @@ This container holds the slides of previous HeidelbergAI meetups
 2) ["How AI eclipses humans in the game of Go"](https://heidelbergai.github.io/slides/KickOff/AlphaGo/), speaker: [Simon Kohl](https://twitter.com/saakohl)
 
 3) [Attendee's Poll](https://heidelbergai.github.io/slides/KickOff/Feedback/)
+
+
+## Differential Neural Computers on June 25th, 2017
+
+1) ["Teaser: Evolutionary AI Basics (15.08.)"]
+(https://HeidelbergAI.github.io/slides/DifferentialNeuralComputers/TeaserNEAT/)
