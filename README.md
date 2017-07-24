@@ -11,6 +11,6 @@ This container holds the slides of previous HeidelbergAI meetups
 3) [Attendee's Poll](https://heidelbergai.github.io/slides/KickOff/Feedback/)
 
 
-## Differentiable Neural Computers on June 25th, 2017
+## Differentiable Neural Computers on July 25th, 2017
 
-1) ["Evolutionary AI Basics"](https://HeidelbergAI.github.io/slides/DifferentialNeuralComputers/TeaserNEAT/), Teaser for follow-up event on 15.08.
+1) ["Evolutionary AI Basics"](https://HeidelbergAI.github.io/slides/DifferentialNeuralComputers/TeaserNEAT/), Teaser for follow-up event on August 15th, 2017
