@@ -13,5 +13,4 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## Differential Neural Computers on June 25th, 2017
 
-1) ["Teaser: Evolutionary AI Basics (15.08.)"]
-(https://HeidelbergAI.github.io/slides/DifferentialNeuralComputers/TeaserNEAT/)
+1) ["Teaser: Evolutionary AI Basics (15.08.)"](https://HeidelbergAI.github.io/slides/DifferentialNeuralComputers/TeaserNEAT/)
