@@ -13,4 +13,6 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## Differentiable Neural Computers on July 25th, 2017
 
-1) ["Evolutionary AI Basics"](https://HeidelbergAI.github.io/slides/DifferentiableNeuralComputers/TeaserNEAT/), Teaser for follow-up event on August 15th, 2017
+2) ["Differentiable Neural Computers"](https://HeidelbergAI.github.io/slides/DifferentiableNeuralComputers/DNC_Talk/), speaker: [Jörg Franke](https://github.com/joergfranke)
+
+2) ["Evolutionary AI Basics"](https://HeidelbergAI.github.io/slides/DifferentiableNeuralComputers/TeaserNEAT/), Teaser for follow-up event on August 15th, 2017
