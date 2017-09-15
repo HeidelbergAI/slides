@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Reinforcement AI Demo: Pong</title>
+
+		<!-- BOOTSTRAP -->
+		<script src="source/Brain.js"></script>
+		<script src="source/Agent.js"></script>
+		<script src="source/Twister.js"></script>
+		<script src="source/Ball.js"></script>
+		<script src="source/Paddle.js"></script>
+		<script src="source/Game.js"></script>
+		<script src="source/Evolution.js"></script>
+		<script src="source/Simulation.js"></script>
+
+		<link rel="stylesheet" href="./index.css">
+
+	</head>
+	<body onload="start()">
+		<aside style="padding:0;">
+			<button onclick="next_epoche();">Next Epoche</button>
+			<menu></menu>
+		</aside>
+
+		<script>
+		(function(global) {
+
+			const buttons = Array.from(document.querySelectorAll('button[disabled]'));
+			const menu    = document.querySelector('aside menu');
+
+			const _start_simulation = function() {
+
+				if (typeof simulation !== 'undefined') {
+					simulation.stop();
+				}
+
+
+				simulation = new Simulation({
+					active: 0,
+					games:  8
+				});
+
+				simulation.setFPS(300);
+
+
+				simulation.start();
+				simulation.update();
+				simulation.render();
+
+
+				menu.innerHTML = simulation.games.map((game, g) => {
+					return '<li><button onclick="simulation.setActive(' + g + ')">#' + g + '</button></li>';
+				}).join('');
+
+				buttons.forEach(button => button.removeAttribute('disabled'));
+
+			};
+
+
+			global.start = _start_simulation;
+
+		})(this);
+
+		const next_epoche = function() {
+
+			let evolution  = simulation.evolution;
+			let population = evolution.cycle();
+
+			console.info('New Population', population);
+
+		};
+
+		</script>
+	</body>
+</html>
