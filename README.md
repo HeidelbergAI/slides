@@ -22,5 +22,9 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## Evolutionary AI on August 15th and August 22th, 2017
 
-1) ["How Neuroscience can help to solve AI"](https://HeidelbergAI.github.io/slides/EvolutionaryAI/TeaserNeuro/neuro_teaser.pdf), Teaser for follow-up event on October 11th and October 18th, 2017
+1) ["Evolutionary AI 1/2"](https://heidelbergai.github.io/slides/EvolutionaryAI/AI-Workshop/part-01.html), speaker: [Christoph Martens](https://github.com/cookiengineer/)
+
+2) ["Evolutionary AI 2/2"](https://heidelbergai.github.io/slides/EvolutionaryAI/AI-Workshop/part-02.html), speaker: [Christoph Martens](https://github.com/cookiengineer/)
+
+3) ["How Neuroscience can help to solve AI"](https://HeidelbergAI.github.io/slides/EvolutionaryAI/TeaserNeuro/neuro_teaser.pdf), Teaser for follow-up event on October 11th and October 18th, 2017
 
