@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AE Series - AI-Crash-Course</title>
+
+    <meta name="author" content="Cookie Engineer">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="./design/reveal.css">
+    <link rel="stylesheet" href="./design/code-zenburn.css">
+    <link rel="stylesheet" href="./design/theme-sky.css">
+
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+	<section>
+		<img src="./asset/00-logo.png" width="192" height="192">
+		<h2>AI-Crash-Course</h2>
+		<p>
+			<a href="http://github.com/Artificial-Engineering">github.com/Artificial-Engineering</a>
+		</p>
+	</section>
+
+	<section>
+		<section>
+			<h1>Intro</h1>
+		</section>
+		<section>
+			<h2>Meta Talk</h2>
+			<ul>
+				<li>Evolutionary AI guy</li>
+				<li>Backprop ES/HyperNEAT lover</li>
+				<li>"Ghetto AI" creator</li>
+				<li>lychee.js Engine</li>
+				<li>artificial.engineering</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Disclaimer</h2>
+			<ul>
+				<li>I'm an engineering guy</li>
+				<li>I say fuck a lot, because shit's on fire, yo.</li>
+				<li>I hate Maths. No, srsly. It's wrong.</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Genetic Programming Basics</h1>
+		</section>
+		<section>
+			<h2>Genetic Programming</h2>
+			<ul>
+				<li>Idea is to represent states as DNA</li>
+				<li>DNA can be combined with others</li>
+				<li>Imagine DNA as "Arrays of values"</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Neural Networks</h2>
+			<p>
+				<img src="./asset/neural-network.png" alt="neural-network">
+			</p>
+		</section>
+		<section>
+			<h2>DNA Serialization</h2>
+			<p>
+				<img src="./asset/genome-nn-weights.png" alt="genome-nn-weights">
+			</p>
+		</section>
+		<section>
+			<h2>Genetic Programming</h2>
+			<ul>
+				<li>2 babies are produced, a son and a daughter</li>
+				<li>2 babies have each more genes of mother or father</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Breeding</h2>
+			<p>
+				<img src="./asset/genome-nn.png" alt="genome-nn">
+			</p>
+		</section>
+		<section>
+			<h2>Breeding</h2>
+			<ul>
+				<li>Technically it's ZW + ZZ genome crossover</li>
+				<li>DNA split is randomized</li>
+				<li>DNA split divides characteristics</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Genetic Programming</h2>
+			<ul>
+				<li>DNA is Array of neuron weights</li>
+				<li>Breeding allows inheriting characteristics</li>
+				<li>Breeding allows inheriting behaviours</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Evolution Basics</h1>
+		</section>
+		<section>
+			<h2>Evolution Basics</h2>
+			<ul>
+				<li>Evolution has three phases</li>
+				<li>Phase 1 is Training</li>
+				<li>Phase 2 is Evaluation</li>
+				<li>Phase 3 is Breeding</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Evolution Cycle / Epoche</h2>
+			<p>
+				<img src="./asset/evolution.png" alt="evolution">
+			</p>
+		</section>
+		<section>
+			<h2>Evolution Basics</h2>
+			<ul>
+				<li>After each Epoche / Cycle:</li>
+				<li>Population gets killed and replaced</li>
+				<li>Some of them are Mutants (20%)</li>
+				<li>Some of them are Survivors (20%)</li>
+				<li>The best ones get to breed (60%)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Evolution Basics</h2>
+			<ul>
+				<li>Multi-Agent System</li>
+				<li>Competitive Environment</li>
+				<li>Agent gets rewarded or punished</li>
+				<li>Agent has fitness as status</li>
+				<li>Agents with better fitness get to multiply</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Live Demo</h2>
+			<p>
+				Game Demo (Manual)
+			</p>
+			<p>
+				<a target="_blank" href="./demo/flappy-plane/index.html">./demo/flappy-plane</a>
+			</p>
+		</section>
+		<section>
+			<h2>Simulation Architecture</h2>
+			<ul>
+				<li>Evolution has an interval / timeout</li>
+				<li>Population is an Array of Agents</li>
+				<li>Each Generation represents one Evolution Cycle</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Agent Architecture</h2>
+			<ul>
+				<li>Each Agent has a brain (FFNN)</li>
+				<li>Each Agent controls an Entity</li>
+				<li>Each Agent has a fitness property</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Brain Architecture</h2>
+			<ul>
+				<li>Sensor 1: Center (position.y) of Plane</li>
+				<li>Sensor 2: Center (position.y) of next Goal</li>
+				<li>Control 1: calls method Plane.flap()</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Brain Architecture</h2>
+			<ul>
+				<li>2 Input Neurons</li>
+				<li>1 Hidden Layer (with 2 Neurons)</li>
+				<li>1 Output Neuron</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Brain Architecture</h2>
+			<p>
+				<img src="./asset/flappy-network.png" alt="flappy-network">
+			</p>
+		</section>
+		<section>
+			<h2>Live Demo</h2>
+			<p>
+				Game Demo (Autopilot)
+			</p>
+			<p>
+				<a target="_blank" href="./demo/flappy-plane/index.html">./demo/flappy-plane</a>
+			</p>
+		</section>
+		<section>
+			<h2>Problems with Evolution</h2>
+			<ul>
+				<li>Mutation Rate good at start</li>
+				<li>Mutation Rate bad at end</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Problems with Breeding</h2>
+			<ul>
+				<li>No Behavioural Analysis</li>
+				<li>No Tracking of DNA History</li>
+				<li>No Tracking of Performance</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Neural Network Basics</h1>
+		</section>
+		<section>
+			<h2>Neural Network Basics</h2>
+			<ul>
+				<li>Networks have layers</li>
+				<li>Layers have neurons</li>
+				<li>Neuron connections are weighted</li>
+				<li>Weight represents "relatedness"</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Neural Network Basics</h2>
+			<p>
+				<img src="./asset/neural-network.png" alt="neural-network">
+			</p>
+		</section>
+		<section>
+			<h2>Programmer's Perspective</h2>
+			<ul>
+				<li>Inputs are variables</li>
+				<li>Neuron connections are conditions</li>
+				<li>Outputs are returned values</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+			<ul>
+				<li>Neural Networks are decision trees</li>
+				<li><code>if/else</code>  is a one-way connection</li>
+				<li><code>if/elseif</code>  is a two-way connection</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+			<p>
+				if/else example:
+			</p>
+<pre class="javascript"><code>if (a === true) {
+	if (b === false && a === true) {
+		return true;
+	}
+}
+return false;</code></pre>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+<pre class="javascript"><code>if (a === true) {
+	if (b === false) {
+		return true;
+	}
+}
+
+return false;</code></pre>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+			<p>
+				<img src="./asset/decision-tree-01.png" alt="decision-tree-01">
+			</p>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+			<p>
+				<img src="./asset/decision-tree-02.png" alt="decision-tree-02">
+			</p>
+		</section>
+		<section>
+			<h2>Decision Trees</h2>
+			<p>
+				<img src="./asset/decision-tree-03.png" alt="decision-tree-03">
+			</p>
+		</section>
+		<section>
+			<h2>Wait a sec</h2>
+			<p>
+				Wait a second... what about vectors and stuff?
+			</p>
+		</section>
+		<section>
+			<h2>Vectorization</h2>
+<pre class="javascript"><code>if (whatever &lt; 0.5) {
+	// whatever is false-ish
+} else if (whatever &gt; 0.5) {
+	// whatever is true-ish
+}</code></pre>
+		</section>
+		<section>
+			<h2>Vectorization</h2>
+			<ul>
+				<li>You can convert pretty much anything</li>
+				<li>enums parameters, arguments, strings</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Vectorization</h2>
+<pre class="javascript"><code>if (a &gt; 0.1 && a &lt; 0.2) {
+	// dict entry #1
+} else if (a &gt; 0.2 && a &lt; 0.3) {
+	// dict entry #2
+} else {
+	// etc ...
+}</code></pre>
+		</section>
+		<section>
+			<h2>Vectorization</h2>
+			<ul>
+				<li>Use the power of dictionaries!</li>
+				<li>Get better results with offsets (thresholds)</li>
+				<li>Dictionaries can be external (A)NNs, too.</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Backpropagation Basics</h1>
+		</section>
+		<section>
+			<h2>Backpropagation Basics</h2>
+			<ul>
+				<li>Neuron weights are randomized</li>
+				<li>Error function tweaks weights</li>
+				<li>Weights are matched to expected outputs</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Backpropagation Basics</h2>
+			<p>
+				<img src="./asset/neural-network.png" alt="neural-network">
+			</p>
+		</section>
+		<section>
+			<h2>Backpropagation Basics</h2>
+			<ul>
+				<li>Pong Game Example</li>
+				<li>X/Y/Z of ball position</li>
+				<li>X/Y/Z of paddle position</li>
+				<li>output > 0.5 to move upwards</li>
+				<li>output < 0.5 to move downwards</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Pong Demo</h2>
+			<p>
+				Game Demo (autobattle)
+			</p>
+			<p>
+				<a target="_blank" href="./demo/pong/index.html">./demo/pong</a>
+			</p>
+		</section>
+		<section>
+			<h2>Pong Network</h2>
+			<p>
+				<img src="./asset/pong-network-01.png" alt="pong-network-01">
+			</p>
+		</section>
+		<section>
+			<h2>Pong Training</h2>
+			<ul>
+				<li>Backpropagation will lead to reinforced weights</li>
+				<li>Error function will match weights closer to expected values</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Pong Network</h2>
+			<p>
+				<img src="./asset/pong-network-02.png" alt="pong-network-02">
+			</p>
+		</section>
+		<section>
+			<h2>Pong Network</h2>
+			<p>
+				<img src="./asset/pong-network-03.png" alt="pong-network-03">
+			</p>
+		</section>
+		<section>
+			<h2>Backpropagation Basics</h2>
+			<ul>
+				<li>All Neurons are already given and static</li>
+				<li>Network only adapts in weights, NOT in connections</li>
+				<li>Reinforcement Learning is an ANALYTICAL model</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Backpropagation Basics</h2>
+			<ul>
+				<li>Gradient calculation for each step is inefficient</li>
+				<li>Gradient boosting is extrapolated and sub-optimal</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Problems with Reinforcement</h2>
+			<ul>
+				<li>No enemy means no improvement</li>
+				<li>No failure means no improvement</li>
+				<li>Always tries to "hack" rewards</li>
+				<li>(Pong Game: Play coop for more rewards)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Reinforcement Learning</h2>
+			<ul>
+				<li>Analytical model</li>
+				<li>NOT a generational model</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+			<p>
+				<img src="./asset/confused.png" alt="confused">
+			</p>
+	</section>
+	<section>
+		<section>
+			<h1>Adaptive Neural Networks</h1>
+		</section>
+		<section>
+			<h2>Adaptive Neural Networks</h2>
+			<p>
+				<img src="./asset/adaptive-nn.png" alt="adaptive-nn">
+			</p>
+		</section>
+		<section>
+			<h2>Adaptive Neural Networks</h2>
+			<ul>
+				<li>Randomized Neurons, weights and connections</li>
+				<li>Randomization always wins</li>
+				<li>Most ANN algorithms use evolution</li>
+			</ul>
+		</section>
+		<section>
+			<h2>ANN Algorithms</h2>
+			<ul>
+				<li>unsupervised evolution cycles</li>
+				<li>relative progress measurement</li>
+				<li>track performance ("fitness")</li>
+				<li>track behaviour ("species")</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>NEAT</h1>
+		</section>
+		<section>
+			<h2>NEAT</h2>
+			<ul>
+				<li>Neuro Evolution of Augmenting Topologies</li>
+				<li>Genetic Algorithm that generates ANNs</li>
+				<li>tracks best fitness of evolved solutions</li>
+				<li>uses CPPN (Composition Pattern Producing Network)</li>
+			</ul>
+		</section>
+		<section>
+			<h2>NEAT</h2>
+			<p>
+				<img src="./asset/neat.png" alt="neat">
+			</p>
+		</section>
+		<section>
+			<h2>NEAT History</h2>
+			<ul>
+				<li>can predict dominant genes</li>
+				<li>can predict dominant species</li>
+				<li>can predict where to spawn neurons</li>
+				<li>respects diversity with gene history markers</li>
+				<li>tracks crossover history and -speciation</li>
+			</ul>
+		</section>
+		<section>
+			<h2>NEAT Agents</h2>
+			<ul>
+				<li>evolutionary simulation</li>
+				<li>tracks agent's fitness</li>
+				<li>tracks agent's dominance</li>
+				<li>tracks agent's history</li>
+			</ul>
+		</section>
+		<section>
+			<h2>NEAT Agents</h2>
+			<p>
+				<img src="./asset/neat-agents.png" alt="neat-agents">
+			</p>
+		</section>
+		<section>
+			<h2>Advantages of NEAT</h2>
+			<ul>
+				<li>Adaptive and unsupervised</li>
+				<li>Mutates connections between neurons</li>
+				<li>Mutates nodes (neurons) in locations</li>
+				<li>History markers for better prediction</li>
+			</ul>
+		</section>
+		<section>
+			<h2>MarI/O Demo</h2>
+			<p>
+				MarI/O Demo (by Sethbling)
+			</p>
+			<p>
+				<a href="https://www.youtube.com/watch?v=qv6UVOQ0F44">mario-demo</a>
+			</p>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>Backprop NEAT</h1>
+		</section>
+		<section>
+			<h2>Backprop NEAT</h2>
+			<ul>
+				<li>ANNs can be backpropagated, too</li>
+				<li>Backpropagation will help determine necessary neurons</li>
+				<li>Solves evolution's mutation-rate problem</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Backprop NEAT</h2>
+			<p>
+				Backprop NEAT Demo (by hardmaru)
+			</p>
+			<p>
+				<a target="_blank" href="https://github.com/hardmaru/backprop-neat-js">backprop-neat</a>
+			</p>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h1>HyperNEAT</h1>
+		</section>
+		<section>
+			<h2>HyperNEAT</h2>
+			<ul>
+				<li>Uses HyperCube encoding for inputs</li>
+				<li>Uses HyperCube encoding for neuron connections</li>
+				<li>allows auto-detecting geometric relations</li>
+			</ul>
+		</section>
+		<section>
+			<h2>HyperNEAT</h2>
+			<p>
+				<img src="./asset/hyperneat.png" alt="hyperneat">
+			</p>
+		</section>
+		<section>
+			<h2>HyperNEAT Demo</h2>
+			<p>
+				HyperNEAT Racers Demo
+			</p>
+			<p>
+				<a href="https://www.youtube.com/watch?v=TM5OuktuP-w">hyperneat-racers-demo</a>
+			</p>
+		</section>
+		<section>
+			<h2>HyperNEAT</h2>
+			<ul>
+				<li>CPPN now also tracks speciation</li>
+				<li>CPPN is reinforced</li>
+				<li>CPPN sees and predicts relations of inputs to outputs</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Papers</h2>
+			<ul>
+				<li><a href="http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf">NEAT</a></li>
+				<li><a href="http://eplex.cs.ucf.edu/publications/2009/stanley-alife09">HyperNEAT</a></li>
+				<li><a href="http://nn.cs.utexas.edu/downloads/papers/hausknecht.gecco12.pdf">HyperNEAT-GPP</a></li>
+				<li><a href="http://eplex.cs.ucf.edu/publications/2012/risi-alife12">ES/HyperNEAT</a></li>
+				<li><a href="https://arxiv.org/pdf/1703.00548.pdf">CoDeepNEAT</a></li>
+			</ul>
+		</section>
+		<section>
+			<h2>References</h2>
+			<ul>
+				<li><a href=""></a> Users Page](http://eplex.cs.ucf.edu/hyperNEATpage/HyperNEAT.html)</li>
+				<li><a href=""></a> Users Page](http://eplex.cs.ucf.edu/ESHyperNEAT/)</li>
+				<li><a href=""></a> Software Catalog](http://eplex.cs.ucf.edu/neat_software/#HyperNEAT)</li>
+			</ul>
+		</section>
+	</section>
+	<section>
+		<section>
+			<h2>The End</h2>
+			<p>
+				Questions and Answers
+			</p>
+			<p>
+				<a href="https://github.com/cookiengineer/talks">github.com/cookiengineer/talks</a>
+			</p>
+			<p>
+				<a href="http://artificial.engineering">artificial.engineering</a>
+			</p>
+			<p>
+				<a href="https://lychee.js.org">lychee.js.org</a>
+			</p>
+		</section>
+	</section>
+
+
+</div>
+</div>
+
+<script src="./source/head.min.js"></script>
+<script src="./source/reveal.js"></script>
+<script src="./source/preview.js"></script>
+
+</body>
+</html>

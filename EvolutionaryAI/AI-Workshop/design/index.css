@@ -1,0 +1,37 @@
+
+ol.index li {
+	line-height: 32px;
+}
+
+ol.index a {
+	display: inline-block;
+	color: #545454;
+	font-size: 16px;
+	text-decoration: none;
+	vertical-align: middle;
+	padding: 0px 0.5em;
+	border-radius: 50%;
+	transition: 250ms all ease-out;
+}
+
+
+ol.index a:hover,
+ol.index a:focus {
+	color: #ffffff;
+	background: #f66d33;
+	transition: 250ms all ease-out;
+}
+
+ol.index h3 {
+	display: inline-block;
+	min-width: 256px;
+	max-width: 256px;
+	margin: 0px 1em 0px 0px;
+	padding: 0px;
+	font-size: 16px;
+	transition: 250ms all ease-out;
+	text-overflow: hidden;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
