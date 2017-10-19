@@ -28,3 +28,11 @@ This container holds the slides of previous HeidelbergAI meetups
 
 3) ["How Neuroscience can help to solve AI"](https://HeidelbergAI.github.io/slides/EvolutionaryAI/TeaserNeuro/neuro_teaser.pdf), Teaser for follow-up event on October 11th and October 18th, 2017
 
+
+## How Neuroscience can help to solve AI on October 9th and October 16th, 2017
+
+1) ["How Neuroscience can help to solve AI 1/2"](https://heidelbergai.github.io/slides/NeuroScienceInAI/active_inference_1009_1.pdf), speaker: [Kai Ueltzhoeffer](https://kaiu.me/)
+
+
+2) ["How Neuroscience can help to solve AI 2/2"](https://heidelbergai.github.io/slides/NeuroScienceInAI/active_inference_1016_2.pdf), speaker: [Kai Ueltzhoeffer](https://kaiu.me/)
+
