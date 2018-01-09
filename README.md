@@ -36,3 +36,7 @@ This container holds the slides of previous HeidelbergAI meetups
 
 2) ["How Neuroscience can help to solve AI 2/2"](https://heidelbergai.github.io/slides/NeuroScienceInAI/active_inference_1016_2.pdf), speaker: [Kai Ueltzhoeffer](https://kaiu.me/)
 
+## Accelerating Drug Discovery with Deep Neural Networks on November 27th, 2017
+
+1) ["Accelerating Drug Discovery with Deep Neural Networks"](https://heidelbergai.github.io/slides/DrugDiscovery/drug_discovery.pdf), speaker: [Tobias Sikosek]
+
