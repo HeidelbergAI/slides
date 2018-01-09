@@ -38,5 +38,5 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## Accelerating Drug Discovery with Deep Neural Networks on November 27th, 2017
 
-1) ["Accelerating Drug Discovery with Deep Neural Networks"](https://heidelbergai.github.io/slides/DrugDiscovery/drug_discovery.pdf), speaker: [Tobias Sikosek]
+1) ["Accelerating Drug Discovery with Deep Neural Networks"](https://heidelbergai.github.io/slides/DrugDiscovery/drug_discovery.pdf), speaker: Tobias Sikosek
 
