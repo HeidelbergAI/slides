@@ -40,3 +40,8 @@ This container holds the slides of previous HeidelbergAI meetups
 
 1) ["Accelerating Drug Discovery with Deep Neural Networks"](https://heidelbergai.github.io/slides/DrugDiscovery/drug_discovery.pdf), speaker: Tobias Sikosek
 
+
+## DeepNilm: A deep learning approach to non-intrusive load monitoring on February 22th, 2017
+
+1) ["DeepNilm: A deep learning approach to non-intrusive load monitoring"](https://heidelbergai.github.io/slides/DeepNILM/deep_nilm.pdf), speaker: Shubham Bansal
+
