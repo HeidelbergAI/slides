@@ -49,6 +49,8 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## Advanced Deep Learning Methods for Medical Image Analysis on March 20th and March 27th, 2017
 
+0) ["intro"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/0_intro.pdf)
+
 1) ["image classification"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/01_image_classification.pdf), speaker: Jakob Wasserthal
 
 2) ["segmentation"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/2_segmentation.pdf), speaker: Fabian Isensee
