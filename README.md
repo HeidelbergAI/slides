@@ -45,3 +45,18 @@ This container holds the slides of previous HeidelbergAI meetups
 
 1) ["DeepNilm: A deep learning approach to non-intrusive load monitoring"](https://heidelbergai.github.io/slides/DeepNILM/deep_nilm.pdf), speaker: Shubham Bansal
 
+
+
+## Advanced Deep Learning Methods for Medical Image Analysis on March 20th and March 27th, 2017
+
+1) ["image classification"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/01_image_classification.pdf), speaker: Jakob Wasserthal
+
+2) ["segmentation"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/2_segmentation.pdf), speaker: Fabian Isensee
+
+3) ["object detection"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/03_object_detection.pdf), speaker: Paul F. Jaeger
+
+4) ["deep generative models"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/04_deep_generative_models.pdf), speaker: Jens Petersen
+
+5) ["semi-supervised learning"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/05_semi_supervised_learning.pdf), speaker: David Zimmerer
+
+
