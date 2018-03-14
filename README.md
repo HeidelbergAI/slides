@@ -43,7 +43,7 @@ This container holds the slides of previous HeidelbergAI meetups
 
 ## DeepNilm: A deep learning approach to non-intrusive load monitoring on February 22th, 2017
 
-1) ["DeepNilm: A deep learning approach to non-intrusive load monitoring"](https://heidelbergai.github.io/slides/DeepNILM/deep_nilm.pdf), speaker: Shubham Bansal
+1) ["DeepNilm: A deep learning approach to non-intrusive load monitoring"](https://heidelbergai.github.io/slides/DeepNILM/deep_nilm.pdf), speaker: [Shubham Bansal](https://www.linkedin.com/in/shubhambansal91/)
 
 
 
