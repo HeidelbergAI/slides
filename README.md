@@ -3,7 +3,7 @@
 This container holds the slides of previous HeidelbergAI meetups
 
 
-## Advanced Deep Learning Methods for Medical Image Analysis on March 20th and March 27th, 2017
+## Advanced Deep Learning Methods for Medical Image Analysis on March 20th and March 27th, 2018
 
 0) ["Intro"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/0_intro.pdf)
 
@@ -18,7 +18,7 @@ This container holds the slides of previous HeidelbergAI meetups
 5) ["Semi-Supervised Learning"](https://heidelbergai.github.io/slides/DeepMedicalImageAnalysis/5_semi_supervised_learning.pdf), speaker: David Zimmerer
 
 
-## DeepNilm: A deep learning approach to non-intrusive load monitoring on February 22th, 2017
+## DeepNilm: A deep learning approach to non-intrusive load monitoring on February 22th, 2018
 
 1) ["DeepNilm: A deep learning approach to non-intrusive load monitoring"](https://heidelbergai.github.io/slides/DeepNILM/deep_nilm.pdf), speaker: [Shubham Bansal](https://www.linkedin.com/in/shubhambansal91/)
 
