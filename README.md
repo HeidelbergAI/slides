@@ -1,3 +1,5 @@
+This repository is deprecated! Please see http://heidelberg.ai/posts
+
 # Slides
 
 This container holds the slides of previous HeidelbergAI meetups
